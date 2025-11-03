@@ -55,18 +55,22 @@ The experimental results show a stark contrast between the two approaches:
 ---
 
 ## 5. Steps to Run the Code
+
+This project is fully reproducible and requires only a single notebook execution. **Google Colaboratory (Colab)** is highly recommended, with the **GPU runtime** enabled for the LSTM model.
+
 1.  **Clone the Repository:**
     ```bash
     git clone [YOUR_REPO_URL]
     ```
-2.  **Install Dependencies:** Install libraries listed in `requirements.txt`:
+
+2.  **Install Dependencies:** Install the required Python libraries listed in `requirements.txt`:
     ```bash
     pip install -r requirements.txt
     ```
-3.  **Execute Notebooks:** Run the notebooks sequentially in a Jupyter environment (Google Colab is highly recommended for GPU support for the LSTM):
-    * `01_Preprocessing_and_Model_A_LR.ipynb`
-    * `02_Model_B_LSTM_Training.ipynb`
 
+3.  **Execute Notebook:** The entire data processing pipeline (loading, cleaning, splitting) and both model trainings (Logistic Regression and LSTM) are contained within a single file.
+
+    * Run the main project notebook: **`MLproject.ipynb`**
 ---
 
 ## 6. Conclusion
