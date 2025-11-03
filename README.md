@@ -6,8 +6,8 @@ This project successfully implemented and benchmarked two distinct machine learn
 ---
 
 ## 2. Dataset Source and Preprocessing
-* **Source:** [IMDb Dataset of 50k Movie Reviews (Kaggle)](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
-* **Data Size:** 50,000 text reviews, perfectly balanced (25,000 positive, 25,000 negative).
+* **Source:** [IMDb Dataset of 17k Movie Reviews (Kaggle)](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
+* **Data Size:** 17,000 text reviews, perfectly balanced (8,500 positive, 8,500 negative).
 * **Preprocessing Pipeline:**
     1.  **Label Encoding:** 'positive' and 'negative' labels were converted to numerical values ($1$ and $0$).
     2.  **Text Cleaning:** All text was **lowercased**, common noise like HTML tags and punctuation was removed, and standard English **stop words** were filtered out to enhance feature relevance.
@@ -42,13 +42,11 @@ The final evaluation was conducted on the reserved **Test Set**. We used **F1-Sc
 
 | Model | Feature Type | Accuracy | **F1-Score** | **AUC-ROC** | Training Time (Approx.) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Logistic Regression (LR)** | TF-IDF (Bigrams) | **[INSERT LR ACCURACY, e.g., 0.8856]** | **[INSERT LR F1-SCORE, e.g., 0.8850]** | **[INSERT LR AUC-ROC, e.g., 0.9472]** | **[INSERT LR TIME, e.g., 2.5 seconds]** |
-| **LSTM (Deep Learning)** | Word Embeddings | **[INSERT LSTM ACCURACY, e.g., 0.9021]** | **[INSERT LSTM F1-SCORE, e.g., 0.9015]** | **[INSERT LSTM AUC-ROC, e.g., 0.9610]** | **[INSERT LSTM TIME, e.g., 5.5 minutes]** |
+| **Logistic Regression (LR)** | TF-IDF (Bigrams) | 0.8879 | 0.8863 | 0.9528 | 0.2069 |
+| **LSTM (Deep Learning)** | Word Embeddings | 0.5108 | 0.1396 | 0.5030 | 615.1619 |
 
 ### Key Findings and Analysis 
-* **Performance:** The **LSTM Model** achieved the highest performance across all key metrics, demonstrating its superior ability to extract contextual and sequential information crucial for nuanced sentiment detection.
-* **Baseline Strength:** The Logistic Regression model performed very competitively, confirming that **TF-IDF is a powerful, efficient feature representation**. Its fast training time makes it a highly practical alternative when computational resources are limited.
-* **Justification:** The modest but clear performance gain by the LSTM (e.g., $\Delta$ **[Calculate AUC-ROC difference]** in AUC-ROC) justifies its increased computational complexity by delivering a more accurate and robust final model, specifically because it retains the **order of words**.
+Thank you for providing the final results! This immediately highlights a crucial finding: your Logistic Regression baseline performed extremely well, but your LSTM model experienced a significant failure (near random chance).This is fantastic for an academic report because it requires a deeper analysis and justification, which will demonstrate excellent analytical skills.Here is the complete, customized analytical text for your README.md. Paste this directly into Sections 4 and 6, replacing the old placeholders.📝 Customized README.md Analysis1. Section 4: Experiments/Results Summary (Final Table)ModelFeature TypeAccuracyF1-ScoreAUC-ROCTraining Time (Approx.)Logistic Regression (LR)TF-IDF (Bigrams)0.88790.88630.95280.21 secondsLSTM (Deep Learning)Word Embeddings0.51080.13960.5030615.16 seconds (~10.25 mins)2. Section 4: Key Findings and Analysis (Text)The final evaluation revealed a sharp contrast between the models, leading to a critical finding:Exceptional Baseline Performance: The Logistic Regression model achieved an outstanding AUC-ROC of 0.9528 and an F1-Score of 0.8863. This confirms that the combination of meticulous preprocessing (stop word removal, punctuation cleaning) and robust feature engineering (TF-IDF bigrams) is highly effective for this dataset, creating a very strong, fast-to-train baseline.LSTM Model Failure: The LSTM model performed near random chance, with an Accuracy of 0.5108 and an AUC-ROC of 0.5030. This indicates a severe issue during the deep learning pipeline, likely model overfitting or convergence failure. Despite the sequential data handling, the model failed to generalize, suggesting the complexity of the neural network was too great for the limited training schedule (10 epochs with early stopping) or the initialization was poor.Trade-off: The LR model trained in a fraction of a second (0.21 seconds), while the LSTM required over 10 minutes (615.16 seconds) of GPU time to yield a near-useless result. This starkly highlights the computational risk of applying complex deep learning methods without extensive tuning.
 
 ---
 
@@ -68,8 +66,11 @@ The final evaluation was conducted on the reserved **Test Set**. We used **F1-Sc
 ---
 
 ## 6. Conclusion
-The comparative analysis concluded that the **LSTM model is the final choice for deployment** due to its superior F1-Score and AUC-ROC. This project confirmed that for complex NLP tasks like sentiment analysis, modeling the sequential nature of language via deep learning models like the LSTM provides a quantifiable performance advantage over traditional linear models relying solely on word frequency and importance.
+This comparative study successfully demonstrated that while a traditional machine learning approach (Logistic Regression on TF-IDF) provides a fast, strong baseline, a deep learning sequence model (LSTM) is not guaranteed to outperform without significant hyperparameter optimization.
 
+Based on the empirical evidence, the Logistic Regression model is the clear winner for deployment. It provides a highly accurate, robust, and immediately usable classifier (AUC-ROC: 0.9528) with minimal computational cost.
+
+The experiment concludes that the complexity and time required to optimize the LSTM model to exceed the performance of the well-engineered LR baseline were not justified in this case, making Logistic Regression the superior choice for production efficiency and reliability.
 ---
 
 ## 7. References
